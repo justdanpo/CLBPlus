@@ -157,26 +157,27 @@ LOCAL sys_time:SYSTEMTIME
 
 		.IF	EAX == 'PMUD'					; DUMP
 
+			mov	EBX, reg
+			assume	EBX: ptr t_reg
+			m2m	threadid, [EBX].threadid
+			m2m	reg_eip, [EBX].ip
+
+			invoke	_Findmodule,			\
+				reg_eip
+
+			mov	EBX, EAX
+			assume	EBX: ptr t_module
+			m2m	pmod_base, [EBX].base
+			m2m	mod_size, [EBX].size_
+
+			invoke	GetParamFromCmd, cmd, 2
+			mov	param2, EAX				
+			invoke	GetParamFromCmd, cmd, 3
+			mov	param3, EAX				
+				
+
 			.IF	LOG_ALREADY_STARTED == 0				
 
-				mov	EBX, reg
-				assume	EBX: ptr t_reg
-				m2m	threadid, [EBX].threadid
-				m2m	reg_eip, [EBX].ip
-
-				invoke	_Findmodule,			\
-					reg_eip
-
-				mov	EBX, EAX
-				assume	EBX: ptr t_module
-				m2m	pmod_base, [EBX].base
-				m2m	mod_size, [EBX].size_
-
-				invoke	GetParamFromCmd, cmd, 2
-				mov	param2, EAX				
-				invoke	GetParamFromCmd, cmd, 3
-				mov	param3, EAX				
-				
 				invoke	_Plugingetvalue,			\
 					VAL_HPROCESS
 
