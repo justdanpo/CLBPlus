@@ -82,11 +82,11 @@ ODBG_Plugininit proc 	C ollydbgversion:dword, hw:HWND, features:ptr dword
             		jmp	_bad_exit
 		.ENDIF
 
-		invoke	Addtolist, 						\
+		invoke	_Addtolist, 						\
 			0, 							\
 			0, 							\
 			$CTA0("CLBPlus\: v1.0")
-		invoke  Addtolist, 						\
+		invoke  _Addtolist, 						\
 			0, 							\
 			-1, 							\
 			$CTA0("  Copyright (C) 2005 by Robert Ayrapetyan")
@@ -164,7 +164,7 @@ LOCAL sys_time:SYSTEMTIME
 				m2m	threadid, [EBX].threadid
 				m2m	reg_eip, [EBX].ip
 
-				invoke	Findmodule,			\
+				invoke	_Findmodule,			\
 					reg_eip
 
 				mov	EBX, EAX
@@ -177,12 +177,12 @@ LOCAL sys_time:SYSTEMTIME
 				invoke	GetParamFromCmd, cmd, 3
 				mov	param3, EAX				
 				
-				invoke	Plugingetvalue,			\
+				invoke	_Plugingetvalue,			\
 					VAL_HPROCESS
 
 				mov	hProcess, EAX
 
-				invoke	Plugingetvalue,			\
+				invoke	_Plugingetvalue,			\
 					VAL_PROCESSNAME
 
 				mov	EDI, EAX
@@ -229,7 +229,7 @@ LOCAL sys_time:SYSTEMTIME
 			invoke	GetLocalTime, 		\
 				addr sys_time
 
-			invoke	Decodeaddress,		\
+			invoke	_Decodeaddress,		\
 				reg_eip,		\
 				pmod_base,		\
 				NULL,			\
@@ -268,7 +268,7 @@ LOCAL sys_time:SYSTEMTIME
 
 			.IF	AUTO_CONTINUE_PROCESS == 1
 
-				invoke	Sendshortcut,		\
+				invoke	_Sendshortcut,		\
 					PM_MAIN,		\
 					NULL,			\
 					WM_KEYDOWN,		\
@@ -286,7 +286,7 @@ LOCAL sys_time:SYSTEMTIME
 				$CTA0("CLBPlus\:"),		\
 				MB_OK or MB_ICONINFORMATION		
 		.ELSE
-			invoke	Addtolist, 			\
+			invoke	_Addtolist, 			\
 				0, 				\
 				0, 				\
 				$CTA0("CLBPlus\:: Unrecognized command")
@@ -345,7 +345,7 @@ _next_param:
 		dec	param_num
 		jnz	_next_param
 
-		invoke	Expression,			\
+		invoke	_Expression,			\
 			addr pres,			\
 			ESI,				\
 			NULL,				\

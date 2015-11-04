@@ -129,14 +129,14 @@ INFOFONT            equ     10
 ;////////////////////////////////////////////////////////////////////////////////
 ;//////////////////////////// INFORMATION FUNCTIONS /////////////////////////////
 
-Addtolist           proto C addr_:dword, highlight:dword, format: ptr byte, :VARARG
-Updatelist          proto C
-Createlistwindow    proto C
-Error               proto C format:ptr byte, :VARARG
-Message             proto C addr_:dword, format:ptr byte, :VARARG
-Infoline            proto C format:ptr byte, :VARARG
-Progress            proto C promille:dword, format:ptr byte, :VARARG
-Flash               proto C format:ptr byte, :VARARG
+_Addtolist           proto C addr_:dword, highlight:dword, format: ptr byte, :VARARG
+_Updatelist          proto C
+_Createlistwindow    proto C
+_Error               proto C format:ptr byte, :VARARG
+_Message             proto C addr_:dword, format:ptr byte, :VARARG
+_Infoline            proto C format:ptr byte, :VARARG
+_Progress            proto C promille:dword, format:ptr byte, :VARARG
+_Flash               proto C format:ptr byte, :VARARG
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -164,19 +164,19 @@ PLAINASCII          equ     01h         ; Plain ASCII character
 DIACRITICAL         equ     02h         ; Diacritical character
 RAREASCII           equ     10h         ; Rare ASCII character
 
-Decodeaddress proto C addr_:dword, base:dword, addrmode:dword, symb:ptr byte, nsymb:dword, comment_:ptr byte;
-Decoderelativeoffset proto C addr_:dword, addrmode:dword, symb:ptr byte, nsymb:dword
-Decodecharacter proto C s:ptr byte, c_:dword
-Printfloat4  proto C s:ptr byte, f:real4
+_Decodeaddress proto C addr_:dword, base:dword, addrmode:dword, symb:ptr byte, nsymb:dword, comment_:ptr byte;
+_Decoderelativeoffset proto C addr_:dword, addrmode:dword, symb:ptr byte, nsymb:dword
+_Decodecharacter proto C s:ptr byte, c_:dword
+_Printfloat4  proto C s:ptr byte, f:real4
 
-Printfloat8 proto C s:ptr byte, double_1:dword, double_2:dword
-Printfloat10 proto C s:ptr byte, double_1:dword, double_2:dword
-Print3dnow proto s:ptr byte, f:ptr byte
-Printsse proto s:ptr byte, f:ptr byte
-Followcall proto addr_:dword
-IstextA proto C c_:byte
-IstextW proto C w:word
-Stringtotext proto C data:ptr byte, ndata:dword, text:ptr byte, ntext:dword
+_Printfloat8 proto C s:ptr byte, double_1:dword, double_2:dword
+_Printfloat10 proto C s:ptr byte, double_1:dword, double_2:dword
+_Print3dnow proto s:ptr byte, f:ptr byte
+_Printsse proto s:ptr byte, f:ptr byte
+_Followcall proto addr_:dword
+_IstextA proto C c_:byte
+_IstextW proto C w:word
+_Stringtotext proto C data:ptr byte, ndata:dword, text:ptr byte, ntext:dword
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;///////////////////////////// DATA INPUT FUNCTIONS /////////////////////////////
@@ -235,28 +235,28 @@ t_extmodel struc 1  ; Model for extended command search
 t_extmodel ends
 
 
-Getlong             proto C title_:ptr byte, data:dword, datasize:dword, letter:byte, mode:dword
-Getlongxy           proto C title_:ptr byte, data:dword, datasize:dword, letter:byte, mode:dword, x:dword, y:dword
-Getregxy            proto C title_:ptr byte, data:dword, letter:byte, x:dword, y:dword
-Getline             proto C title_:ptr byte, data:dword
-Getlinexy           proto C title_:ptr byte, data:dword, x:dword, y:dword
-Getfloat10          proto C title_:ptr byte, fdata:ptr real10, tag:ptr byte, letter:byte, mode:dword
-Getfloat10xy        proto C title_:ptr byte, fdata:ptr real10, tag:ptr byte, letter:byte, mode:dword, x:dword, y:dword
-Getfloat            proto C title_:ptr byte, fdata:dword, size_:dword, letter:byte, mode:dword
-Getfloatxy          proto C title_:ptr byte, fdata:dword, size_:dword, letter:byte, mode:dword, x:dword, y:dword
-Getasmfindmodel     proto C model_:ptr t_asmmodel, letter:byte, searchall:dword
-Getasmfindmodelxy   proto C model_:ptr t_asmmodel, letter:byte, searchall:dword, x:dword, y:dword
-Gettext             proto C title_:ptr byte, text:ptr byte, letter:byte, type_:dword, fontindex:dword
-Gettextxy           proto C title_:ptr byte, text:ptr byte, letter:byte, type_:dword, fontindex:dword, x:dword, y:dword
-Gethexstring        proto C title_:ptr byte, hs:ptr t_hexstr, mode:dword, fontindex:dword, letter:byte
-Gethexstringxy      proto C title_:ptr byte, hs:ptr t_hexstr, mode:dword, fontindex:dword, letter:byte, x:dword, y:dword
-Getmmx              proto C title_:ptr byte, data:byte, mode:dword
-Getmmxxy            proto C title_:ptr byte, data:byte, mode:dword, x:dword, y:dword
-Get3dnow            proto C title_:ptr byte, data:byte, mode:dword
-Get3dnowxy          proto C title_:ptr byte, data:byte, mode:dword, x:dword, y:dword
-Browsefilename      proto C title_:ptr byte, name_:ptr byte, defext:ptr byte, getarguments:dword
-OpenEXEfile         proto C path:ptr byte, dropped:dword
-Animate             proto C animation:dword
+_Getlong             proto C title_:ptr byte, data:dword, datasize:dword, letter:byte, mode:dword
+_Getlongxy           proto C title_:ptr byte, data:dword, datasize:dword, letter:byte, mode:dword, x:dword, y:dword
+_Getregxy            proto C title_:ptr byte, data:dword, letter:byte, x:dword, y:dword
+_Getline             proto C title_:ptr byte, data:dword
+_Getlinexy           proto C title_:ptr byte, data:dword, x:dword, y:dword
+_Getfloat10          proto C title_:ptr byte, fdata:ptr real10, tag:ptr byte, letter:byte, mode:dword
+_Getfloat10xy        proto C title_:ptr byte, fdata:ptr real10, tag:ptr byte, letter:byte, mode:dword, x:dword, y:dword
+_Getfloat            proto C title_:ptr byte, fdata:dword, size_:dword, letter:byte, mode:dword
+_Getfloatxy          proto C title_:ptr byte, fdata:dword, size_:dword, letter:byte, mode:dword, x:dword, y:dword
+_Getasmfindmodel     proto C model_:ptr t_asmmodel, letter:byte, searchall:dword
+_Getasmfindmodelxy   proto C model_:ptr t_asmmodel, letter:byte, searchall:dword, x:dword, y:dword
+_Gettext             proto C title_:ptr byte, text:ptr byte, letter:byte, type_:dword, fontindex:dword
+_Gettextxy           proto C title_:ptr byte, text:ptr byte, letter:byte, type_:dword, fontindex:dword, x:dword, y:dword
+_Gethexstring        proto C title_:ptr byte, hs:ptr t_hexstr, mode:dword, fontindex:dword, letter:byte
+_Gethexstringxy      proto C title_:ptr byte, hs:ptr t_hexstr, mode:dword, fontindex:dword, letter:byte, x:dword, y:dword
+_Getmmx              proto C title_:ptr byte, data:byte, mode:dword
+_Getmmxxy            proto C title_:ptr byte, data:byte, mode:dword, x:dword, y:dword
+_Get3dnow            proto C title_:ptr byte, data:byte, mode:dword
+_Get3dnowxy          proto C title_:ptr byte, data:byte, mode:dword, x:dword, y:dword
+_Browsefilename      proto C title_:ptr byte, name_:ptr byte, defext:ptr byte, getarguments:dword
+_OpenEXEfile         proto C path:ptr byte, dropped:dword
+_Animate             proto C animation:dword
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;//////////////////////////// SORTED DATA FUNCTIONS /////////////////////////////
@@ -492,22 +492,22 @@ t_table ends
 ;!!!  DRAWFUNC or ptr DRAWFUNC !!!
 
 
-Createsorteddata proto C sd:ptr t_sorted, name_:ptr byte, itemsize:dword, nmax:dword, sortfunc:PSORTFUNC, destfunc:PDESTFUNC
-Destroysorteddata proto C sd:ptr t_sorted
-Addsorteddata proto C sd:ptr t_sorted, item:dword
-Deletesorteddata proto C sd:ptr t_sorted, addr_:dword
-Deletesorteddatarange proto C sd:ptr t_sorted, addr0:dword, addr1:dword
-Deletenonconfirmedsorteddata proto C sd:ptr t_sorted
-Findsorteddata proto C sd:ptr t_sorted, addr_:dword
-Findsorteddatarange proto C sd:ptr t_sorted, addr0:dword, addr1:dword
-Findsorteddataindex proto C sd:ptr t_sorted, addr0:dword, addr1:dword
-Sortsorteddata proto C sd:ptr t_sorted, sort:dword
-Getsortedbyselection proto C sd:ptr t_sorted, index:dword
-Defaultbar proto C pb:ptr t_bar
-Tablefunction proto C pt:ptr t_table, hw:HWND, msg:UINT, wp:WPARAM, lp:LPARAM
-Painttable proto C hw:HWND, pt:ptr t_table, getline:DRAWFUNC
-Gettableselectionxy proto C pt:ptr t_table, column:dword, px:ptr dword, py:ptr dword
-Selectandscroll proto C pt:ptr t_table, index:dword, mode:dword
+_Createsorteddata proto C sd:ptr t_sorted, name_:ptr byte, itemsize:dword, nmax:dword, sortfunc:PSORTFUNC, destfunc:PDESTFUNC
+_Destroysorteddata proto C sd:ptr t_sorted
+_Addsorteddata proto C sd:ptr t_sorted, item:dword
+_Deletesorteddata proto C sd:ptr t_sorted, addr_:dword
+_Deletesorteddatarange proto C sd:ptr t_sorted, addr0:dword, addr1:dword
+_Deletenonconfirmedsorteddata proto C sd:ptr t_sorted
+_Findsorteddata proto C sd:ptr t_sorted, addr_:dword
+_Findsorteddatarange proto C sd:ptr t_sorted, addr0:dword, addr1:dword
+_Findsorteddataindex proto C sd:ptr t_sorted, addr0:dword, addr1:dword
+_Sortsorteddata proto C sd:ptr t_sorted, sort:dword
+_Getsortedbyselection proto C sd:ptr t_sorted, index:dword
+_Defaultbar proto C pb:ptr t_bar
+_Tablefunction proto C pt:ptr t_table, hw:HWND, msg:UINT, wp:WPARAM, lp:LPARAM
+_Painttable proto C hw:HWND, pt:ptr t_table, getline:DRAWFUNC
+_Gettableselectionxy proto C pt:ptr t_table, column:dword, px:ptr dword, py:ptr dword
+_Selectandscroll proto C pt:ptr t_table, index:dword, mode:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -551,19 +551,19 @@ NM_IMCALL           equ     0FEh        ; Intermodular call
 NMHISTORY           equ     040h        ; Converts NM_xxx to type of init list
 
 
-Insertname proto C addr_:dword, type_:dword, name_:ptr byte
-Quickinsertname proto C addr_:dword, type_:dword, name_:ptr byte
-Mergequicknames proto C
-Discardquicknames proto C
-Findname proto C addr_:dword, type_:dword, name_:ptr byte
-Decodename proto C addr_:dword, type_:dword, name_:ptr byte
-Findnextname proto C name_:ptr byte
-Findlabel proto C addr_:dword, name_:ptr byte
-Deletenamerange proto C addr0:dword, addr1:dword, type_:dword
-Findlabelbyname proto C name_:ptr byte, addr_:ptr dword, addr0:dword, addr1:dword
-Findimportbyname proto C name_:ptr byte, addr0:dword, addr1:dword
-Demanglename proto C name_:ptr byte, type_:dword, undecorated:ptr byte
-Findsymbolicname proto C addr_:dword, fname:ptr byte
+_Insertname proto C addr_:dword, type_:dword, name_:ptr byte
+_Quickinsertname proto C addr_:dword, type_:dword, name_:ptr byte
+_Mergequicknames proto C
+_Discardquicknames proto C
+_Findname proto C addr_:dword, type_:dword, name_:ptr byte
+_Decodename proto C addr_:dword, type_:dword, name_:ptr byte
+_Findnextname proto C name_:ptr byte
+_Findlabel proto C addr_:dword, name_:ptr byte
+_Deletenamerange proto C addr0:dword, addr1:dword, type_:dword
+_Findlabelbyname proto C name_:ptr byte, addr_:ptr dword, addr0:dword, addr1:dword
+_Findimportbyname proto C name_:ptr byte, addr0:dword, addr1:dword
+_Demanglename proto C name_:ptr byte, type_:dword, undecorated:ptr byte
+_Findsymbolicname proto C addr_:dword, fname:ptr byte
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;//////////////////////////// DISASSEMBLY FUNCTIONS /////////////////////////////
@@ -792,18 +792,18 @@ t_disasm struc 1
 t_disasm ends
 ; sizeof t_operand = 2153
 
-Disasm proto C src:ptr byte, srcsize:dword, srcip:dword, srcdec:ptr byte, disasm:ptr t_disasm, disasmmode:dword, threadid:dword
-Disassembleback proto C block:ptr byte, base:dword, size_:dword, ip:dword, n:dword, usedec:dword
-Disassembleforward proto C block:ptr byte, base:dword, size_:dword, ip:dword, n:dword, usedec:dword
-Issuspicious proto C cmd:ptr byte, size_:dword, ip:dword, threadid:dword, preg:ptr t_reg, s:ptr byte
-Isfilling proto C offset_:dword, data:ptr byte, size_:dword, align_:dword
+_Disasm proto C src:ptr byte, srcsize:dword, srcip:dword, srcdec:ptr byte, disasm:ptr t_disasm, disasmmode:dword, threadid:dword
+_Disassembleback proto C block:ptr byte, base:dword, size_:dword, ip:dword, n:dword, usedec:dword
+_Disassembleforward proto C block:ptr byte, base:dword, size_:dword, ip:dword, n:dword, usedec:dword
+_Issuspicious proto C cmd:ptr byte, size_:dword, ip:dword, threadid:dword, preg:ptr t_reg, s:ptr byte
+_Isfilling proto C offset_:dword, data:ptr byte, size_:dword, align_:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;////////////////////////////// ASSEMBLY FUNCTIONS //////////////////////////////
 
-Assemble proto C cmd:ptr byte, ip:dword, model_:ptr t_asmmodel, attempt:dword, constsize:dword, errtext:ptr byte
-Checkcondition proto C code_:dword, flags:dword
+_Assemble proto C cmd:ptr byte, ip:dword, model_:ptr t_asmmodel, attempt:dword, constsize:dword, errtext:ptr byte
+_Checkcondition proto C code_:dword, flags:dword
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;///////////////////////////////// EXPRESSIONS //////////////////////////////////
@@ -824,7 +824,7 @@ t_result struc 1    ; Result of expression's evaluation
 t_result ends
 ; sizeof t_result = 278
 
-Expression proto C result:ptr t_result, expression:ptr byte, a:dword, b:dword, data:ptr byte, database:dword, datasize:dword, threadid:dword
+_Expression proto C result:ptr t_result, expression:ptr byte, a:dword, b:dword, data:ptr byte, database:dword, datasize:dword, threadid:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -850,12 +850,12 @@ t_thread struc 1    ; Information about active threads
         reserved        dd 16 dup (?)     ; Reserved for future compatibility
 t_thread ends
 
-Createthreadwindow proto C
-Findthread proto threadid:dword
-Decodethreadname proto C s:dword, threadid:dword, mode_:dword
-Getcputhreadid proto C
-Runsinglethread proto C threadid:dword
-Restoreallthreads proto C
+_Createthreadwindow proto C
+_Findthread proto threadid:dword
+_Decodethreadname proto C s:dword, threadid:dword, mode_:dword
+_Getcputhreadid proto C
+_Runsinglethread proto C threadid:dword
+_Restoreallthreads proto C
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -887,12 +887,12 @@ t_heap struc 1 ; Heap block descriptor
         parent      dword   ?           ; Handle of heap descriptor block
 t_heap ends
 
-Findmemory proto C
-Guardmemory proto C base:dword, size_:dword, guard:dword
-Havecopyofmemory proto C copy:ptr byte, base:dword, size_:dword
-Readmemory proto C buf:dword, addr_:dword, size_:dword, mode:dword
-Writememory proto C buf:dword, addr_:dword, size_:dword, mode:dword
-Readcommand proto C ip:dword, cmd:ptr byte
+_Findmemory proto C
+_Guardmemory proto C base:dword, size_:dword, guard:dword
+_Havecopyofmemory proto C copy:ptr byte, base:dword, size_:dword
+_Readmemory proto C buf:dword, addr_:dword, size_:dword, mode:dword
+_Writememory proto C buf:dword, addr_:dword, size_:dword, mode:dword
+_Readcommand proto C ip:dword, cmd:ptr byte
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -997,12 +997,12 @@ t_module struc 1    ; Executable module descriptor
         reserved        dd 15 dup (?)   ; Reserved for plugin compatibility
 t_module ends
 
-Findmodule proto C addr_:dword
-Findfixup proto C pmod:ptr t_module, addr_:dword
-Finddecode proto C addr_:dword, psize:ptr dword
-Findfileoffset proto C pmod:ptr t_module, addr_:dword
-Decoderange proto C addr_:dword, size_:dword, s:ptr byte
-Analysecode proto C pm:ptr t_module
+_Findmodule proto C addr_:dword
+_Findfixup proto C pmod:ptr t_module, addr_:dword
+_Finddecode proto C addr_:dword, psize:ptr dword
+_Findfileoffset proto C pmod:ptr t_module, addr_:dword
+_Decoderange proto C addr_:dword, size_:dword, s:ptr byte
+_Analysecode proto C pm:ptr t_module
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1113,22 +1113,22 @@ BKUP_SAVEDATA       equ     5               ; Save original data to file
 BKUP_SAVECOPY       equ     6               ; Save backup copy to file
 BKUP_DELETE         equ     7               ; Delete backup copy
 
-Registerotclass proto C classname:ptr byte, iconname:ptr byte, classproc:dword
-Newtablewindow proto C pt:ptr t_table, nlines:dword, maxcolumns:dword, winclass:ptr byte, wintitle:ptr byte
-Quicktablewindow proto C pt:ptr t_table, nlines:dword, maxcolumns:dword, winclass:ptr byte, wintitle:ptr byte
-Createdumpwindow proto C name_:ptr byte, base:dword, size_:dword, addr_:dword, type_:dword, specdump:PSPECFUNC
-Setdumptype proto C pd:ptr t_dump, dumptype:dword
-Dumpbackup proto pd:ptr t_dump, action:dword
-Broadcast proto C msg:UINT, wp:WPARAM, lp:LPARAM
+_Registerotclass proto C classname:ptr byte, iconname:ptr byte, classproc:dword
+_Newtablewindow proto C pt:ptr t_table, nlines:dword, maxcolumns:dword, winclass:ptr byte, wintitle:ptr byte
+_Quicktablewindow proto C pt:ptr t_table, nlines:dword, maxcolumns:dword, winclass:ptr byte, wintitle:ptr byte
+_Createdumpwindow proto C name_:ptr byte, base:dword, size_:dword, addr_:dword, type_:dword, specdump:PSPECFUNC
+_Setdumptype proto C pd:ptr t_dump, dumptype:dword
+_Dumpbackup proto pd:ptr t_dump, action:dword
+_Broadcast proto C msg:UINT, wp:WPARAM, lp:LPARAM
 
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;////////////////////////// DATA CONVERSION FUNCTIONS ///////////////////////////
 
-Compress proto C bufin:ptr byte, nbufin:dword, bufout:ptr byte, nbufout:dword
-Getoriginaldatasize proto C bufin:ptr byte, nbufin:dword
-Decompress proto C bufin:ptr byte, nbufin:dword, bufout:ptr byte, nbufout:dword
-Calculatecrc proto C copy:ptr byte, base:dword, size_:dword, pmod:ptr t_module, fixupoffset:dword
+_Compress proto C bufin:ptr byte, nbufin:dword, bufout:ptr byte, nbufout:dword
+_Getoriginaldatasize proto C bufin:ptr byte, nbufin:dword
+_Decompress proto C bufin:ptr byte, nbufin:dword, bufout:ptr byte, nbufout:dword
+_Calculatecrc proto C copy:ptr byte, base:dword, size_:dword, pmod:ptr t_module, fixupoffset:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1141,13 +1141,13 @@ t_ref struc 1   ; Description of reference
         dest        dword   ?   ; Destination of call
 t_ref ends
 
-Findreferences proto C base:dword, size_:dword, addr0:dword, addr1:dword, origin:dword, recurseonjump:dword, title_:ptr byte
-Findstrings proto C base:dword, size_:dword, origin:dword, title_:ptr byte
-Findalldllcalls proto C pd:ptr t_dump, origin:dword, title_:ptr byte
-Findallcommands proto C pd:ptr t_dump, model_:ptr t_asmmodel, origin:dword, title_:ptr byte
-Findallsequences proto C pd:ptr t_dump, model_:ptr t_extmodel, origin:dword, title_:ptr byte
-Walkreference proto C dir:dword
-Walkreferenceex proto C dir:dword, size_:dword
+_Findreferences proto C base:dword, size_:dword, addr0:dword, addr1:dword, origin:dword, recurseonjump:dword, title_:ptr byte
+_Findstrings proto C base:dword, size_:dword, origin:dword, title_:ptr byte
+_Findalldllcalls proto C pd:ptr t_dump, origin:dword, title_:ptr byte
+_Findallcommands proto C pd:ptr t_dump, model_:ptr t_asmmodel, origin:dword, title_:ptr byte
+_Findallsequences proto C pd:ptr t_dump, model_:ptr t_extmodel, origin:dword, title_:ptr byte
+_Walkreference proto C dir:dword
+_Walkreferenceex proto C dir:dword, size_:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1200,31 +1200,31 @@ t_hardbpoint struc 1
         reserved    dd 4 dup (?)    ; Reserved for the future
 t_hardbpoint ends
 
-Setbreakpoint proto C addr_:dword, type_:dword, cmd:byte
-Manualbreakpoint proto C addr_:dword, key:dword, shiftkey:dword, nametype:dword, font:dword
-Deletebreakpoints proto C addr0:dword, addr1:dword, silent:dword
-Getbreakpointtype proto addr_:dword
-Getnextbreakpoint proto C addr_:dword, type_:ptr dword, cmd:ptr dword
-Tempbreakpoint proto C addr_:dword, mode:dword
-Hardbreakpoints proto C closeondelete:dword
-Sethardwarebreakpoint proto C addr_:dword, size_:dword, type_:dword
-Deletehardwarebreakpoint proto C index:dword
-Deletehardwarebreakbyaddr proto C addr_:dword
-Setmembreakpoint proto C type_:dword, addr_:dword, size_:dword
-Findhittrace proto C addr_:dword, ptracecopy:ptr LPBYTE, psize:ptr byte
-Modifyhittrace proto C addr0:dword, addr1:dword, mode:dword
-Isretaddr proto C retaddr:dword, procaddr:LPDWORD
-Creatertracewindow proto C
-Settracecondition proto C cond:ptr byte, onsuspicious:dword, in0:dword, in1:dword, out0:dword, out1:dword
-Startruntrace proto C preg:ptr t_reg
-Deleteruntrace proto C
-Runtracesize proto C
-Findprevruntraceip proto C ip:dword, startback:dword
-Findnextruntraceip proto C ip:dword, startback:dword
-Getruntraceregisters proto C nback:dword, preg:ptr t_reg, pold:ptr t_reg, cmd:ptr byte, comment_:ptr byte
-Getruntraceprofile proto C addr_:dword, size_:dword, profile:LPDWORD
-Scrollruntracewindow proto C back:dword
-Createprofilewindow proto C base:dword, size_:dword
+_Setbreakpoint proto C addr_:dword, type_:dword, cmd:byte
+_Manualbreakpoint proto C addr_:dword, key:dword, shiftkey:dword, nametype:dword, font:dword
+_Deletebreakpoints proto C addr0:dword, addr1:dword, silent:dword
+_Getbreakpointtype proto addr_:dword
+_Getnextbreakpoint proto C addr_:dword, type_:ptr dword, cmd:ptr dword
+_Tempbreakpoint proto C addr_:dword, mode:dword
+_Hardbreakpoints proto C closeondelete:dword
+_Sethardwarebreakpoint proto C addr_:dword, size_:dword, type_:dword
+_Deletehardwarebreakpoint proto C index:dword
+_Deletehardwarebreakbyaddr proto C addr_:dword
+_Setmembreakpoint proto C type_:dword, addr_:dword, size_:dword
+_Findhittrace proto C addr_:dword, ptracecopy:ptr LPBYTE, psize:ptr byte
+_Modifyhittrace proto C addr0:dword, addr1:dword, mode:dword
+_Isretaddr proto C retaddr:dword, procaddr:LPDWORD
+_Creatertracewindow proto C
+_Settracecondition proto C cond:ptr byte, onsuspicious:dword, in0:dword, in1:dword, out0:dword, out1:dword
+_Startruntrace proto C preg:ptr t_reg
+_Deleteruntrace proto C
+_Runtracesize proto C
+_Findprevruntraceip proto C ip:dword, startback:dword
+_Findnextruntraceip proto C ip:dword, startback:dword
+_Getruntraceregisters proto C nback:dword, preg:ptr t_reg, pold:ptr t_reg, cmd:ptr byte, comment_:ptr byte
+_Getruntraceprofile proto C addr_:dword, size_:dword, profile:LPDWORD
+_Scrollruntracewindow proto C back:dword
+_Createprofilewindow proto C base:dword, size_:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1241,7 +1241,7 @@ t_inject struc 1 ; Description of injected code
 t_inject ends
 
 
-Injectcode proto C threadid:dword, inject:ptr t_inject, data:ptr byte, datasize:dword, parm1:dword, parm2:dword, answerfunc: PINJECTANSWER
+_Injectcode proto C threadid:dword, inject:ptr t_inject, data:ptr byte, datasize:dword, parm1:dword, parm2:dword, answerfunc: PINJECTANSWER
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1261,16 +1261,16 @@ CPU_NOCREATE        equ     004000h     ; Don't create CPU window if absent
 CPU_REDRAW          equ     008000h     ; Redraw CPU window immediately
 CPU_NOFOCUS         equ     010000h     ; Don't assign focus to main window
 
-Setcpu proto C threadid:dword, asmaddr:dword, dumpaddr:dword, stackaddr:dword, mode:dword
-Setdisasm proto C asmaddr:dword, selsize:dword, mode:dword
-Redrawdisassembler proto C
-Getdisassemblerrange proto C pbase:LPDWORD, psize:LPDWORD
-Findprocbegin proto C addr_:dword
-Findprocend proto C addr_:dword 
-Findprevproc proto C addr_:dword
-Findnextproc proto C addr_:dword
-Getproclimits proto C addr_:dword, start:LPDWORD, end_:LPDWORD
-Sendshortcut proto C where:dword, addr_:dword, msg_:dword, ctrl_:dword, shift_:dword, vkcode_:dword
+_Setcpu proto C threadid:dword, asmaddr:dword, dumpaddr:dword, stackaddr:dword, mode:dword
+_Setdisasm proto C asmaddr:dword, selsize:dword, mode:dword
+_Redrawdisassembler proto C
+_Getdisassemblerrange proto C pbase:LPDWORD, psize:LPDWORD
+_Findprocbegin proto C addr_:dword
+_Findprocend proto C addr_:dword 
+_Findprevproc proto C addr_:dword
+_Findnextproc proto C addr_:dword
+_Getproclimits proto C addr_:dword, start:LPDWORD, end_:LPDWORD
+_Sendshortcut proto C where:dword, addr_:dword, msg_:dword, ctrl_:dword, shift_:dword, vkcode_:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1292,9 +1292,9 @@ STAT_FINISHED       equ     4               ; Process finished
 STAT_CLOSING        equ     5               ; Process is requested to terminate
 
 
-Getstatus proto C
-Go proto threadid:dword, tilladdr:dword, stepmode:dword, givechance:dword, backupregs:dword
-Suspendprocess proto C processevents:dword
+_Getstatus proto C
+_Go proto threadid:dword, tilladdr:dword, stepmode:dword, givechance:dword, backupregs:dword
+_Suspendprocess proto C processevents:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1305,11 +1305,11 @@ DASC_NOHEX          equ     1               ; Test, print nothing if not a strin
 DASC_ASCII          equ     2               ; Force ASCII
 DASC_PASCAL         equ     3               ; Force Pascal
 
-Findknownfunction proto C addr_:dword, direct:dword, level:dword, fname:ptr byte
-Decodeknownargument proto C addr_:dword, arg_:ptr byte, value:dword, valid:dword, s:ptr byte, mask_:ptr byte, pset:ptr byte
-Findunknownfunction proto C ip:dword, code_:ptr byte, dec_:ptr byte, size_:dword, fname:ptr byte
-Decodeascii proto C value:dword, s:ptr byte, len:dword, mode:dword
-Decodeunicode proto C value:dword, s:ptr byte, len:dword
+_Findknownfunction proto C addr_:dword, direct:dword, level:dword, fname:ptr byte
+_Decodeknownargument proto C addr_:dword, arg_:ptr byte, value:dword, valid:dword, s:ptr byte, mask_:ptr byte, pset:ptr byte
+_Findunknownfunction proto C ip:dword, code_:ptr byte, dec_:ptr byte, size_:dword, fname:ptr byte
+_Decodeascii proto C value:dword, s:ptr byte, len:dword, mode:dword
+_Decodeunicode proto C value:dword, s:ptr byte, len:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1324,22 +1324,22 @@ t_sourceline struc 1    ; Source line descriptor
         line        dword   ?              ; 0-based line number                  
 t_sourceline ends
 
-Showsourcefromaddress proto C addr_:dword, show:dword
-Getresourcestring proto C pm:ptr t_module, id:dword, s:ptr byte
-Getlinefromaddress proto C addr_:dword
-Getaddressfromline proto C addr0:dword, addr1:dword, path:ptr byte, line:dword
-Getsourcefilelimits proto C nameaddr:dword, addr0:LPDWORD, addr1:LPDWORD
-Decodefullvarname proto C pmod:ptr t_module, psym:ptr t_symvar, offset_:dword, name_:ptr byte
-Getbprelname proto C pmod:ptr t_module, addr_:dword, offset_:dword, s:ptr byte, nsymb:dword
+_Showsourcefromaddress proto C addr_:dword, show:dword
+_Getresourcestring proto C pm:ptr t_module, id:dword, s:ptr byte
+_Getlinefromaddress proto C addr_:dword
+_Getaddressfromline proto C addr0:dword, addr1:dword, path:ptr byte, line:dword
+_Getsourcefilelimits proto C nameaddr:dword, addr0:LPDWORD, addr1:LPDWORD
+_Decodefullvarname proto C pmod:ptr t_module, psym:ptr t_symvar, offset_:dword, name_:ptr byte
+_Getbprelname proto C pmod:ptr t_module, addr_:dword, offset_:dword, s:ptr byte, nsymb:dword
 
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;//////////////////////////////// WATCH SUPPORT /////////////////////////////////
 
-Createwatchwindow proto C
-Deletewatch proto C indexone:dword
-Insertwatch proto C indexone:dword, text:ptr byte
-Getwatch proto C indexone:dword, text:ptr byte
+_Createwatchwindow proto C
+_Deletewatch proto C indexone:dword
+_Insertwatch proto C indexone:dword, text:ptr byte
+_Getwatch proto C indexone:dword, text:ptr byte
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;////////////////////////// WINDOWS-SPECIFIC FUNCTIONS //////////////////////////
@@ -1366,7 +1366,7 @@ t_window struc 1    ; Description of window
             tree        db      MAXNEST dup (?)  ; Tree display
 t_window ends
 
-Createwinwindow proto C
+_Createwinwindow proto C
 
 
 ;////////////////////////////////////////////////////////////////////////////////
@@ -1429,14 +1429,14 @@ VAL_CPUDSTACK       equ     55      ; Dump descriptor of CPU Stack
 VAL_APIHELP         equ     56      ; Name of selected API help file
 VAL_HARDBP          equ     57      ; Whether hardware breakpoints enabled
 
-Registerpluginclass proto C classname:ptr byte, iconname:ptr byte, dllinst:HINSTANCE, classproc:dword
-Unregisterpluginclass proto C classname:ptr byte
-Pluginwriteinttoini proto C dllinst:HINSTANCE, key:ptr byte, value:dword
-Pluginwritestringtoini proto dllinst:HINSTANCE, key:ptr byte, s:ptr byte
-Pluginreadintfromini proto C dllinst:HINSTANCE, key:ptr byte, def:dword
-Pluginreadstringfromini proto C dllinst:HINSTANCE, key:ptr byte, s:ptr byte, def:ptr byte
-Pluginsaverecord proto C tag:dword, size_:dword, data:dword
-Plugingetvalue proto C type_:dword
+_Registerpluginclass proto C classname:ptr byte, iconname:ptr byte, dllinst:HINSTANCE, classproc:dword
+_Unregisterpluginclass proto C classname:ptr byte
+_Pluginwriteinttoini proto C dllinst:HINSTANCE, key:ptr byte, value:dword
+_Pluginwritestringtoini proto dllinst:HINSTANCE, key:ptr byte, s:ptr byte
+_Pluginreadintfromini proto C dllinst:HINSTANCE, key:ptr byte, def:dword
+_Pluginreadstringfromini proto C dllinst:HINSTANCE, key:ptr byte, s:ptr byte, def:ptr byte
+_Pluginsaverecord proto C tag:dword, size_:dword, data:dword
+_Plugingetvalue proto C type_:dword
 
 ;////////////////////////////////////////////////////////////////////////////////
 ;////////////////////// EXPORTED PLUGIN CALLBACK FUNCTIONS //////////////////////
