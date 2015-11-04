@@ -200,7 +200,7 @@ LOCAL sys_time:SYSTEMTIME
 				invoke	CreateFile,			\
 					ESI,				\
 					GENERIC_WRITE,			\
-					NULL,				\
+					FILE_SHARE_READ,		\
 					NULL,				\
 					CREATE_ALWAYS,			\
 					NULL,				\
